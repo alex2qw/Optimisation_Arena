@@ -1,0 +1,39 @@
+{
+  "name": "optimisation-arena",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --webpack",
+    "build": "next build --webpack",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:integration": "python3 scripts/capture-report.py && vitest run tests/contracts.test.tsx"
+  },
+  "dependencies": {
+    "next": "16.4.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "plotly.js-dist-min": "latest",
+    "react-plotly.js": "latest",
+    "katex": "latest",
+    "lucide-react": "1.55.0",
+    "zod": "4.3.6"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3",
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "@types/react-plotly.js": "latest",
+    "@types/plotly.js": "latest",
+    "@types/katex": "latest",
+    "tailwindcss": "4.3.3",
+    "@tailwindcss/postcss": "latest",
+    "eslint": "9.39.5",
+    "eslint-config-next": "16.4.0",
+    "vitest": "3.2.7",
+    "jsdom": "26.1.0"
+  }
+}

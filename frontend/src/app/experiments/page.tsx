@@ -1,0 +1,6 @@
+'use client';
+import Link from 'next/link';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { useExperiment } from '@/context/ExperimentContext';
+export default function Experiments() { const { state: s, load } = useExperiment(); const [id, setId] = useState(''); const router = useRouter(); return <main className="article"><span className="eyebrow">EXPERIMENT LIBRARY</span><h1>Your experiments</h1><p>The backend keeps up to 100 reports in memory and has no history-list endpoint. Reports disappear when the backend restarts. This list shows reports opened during this browser session.</p><form onSubmit={async (e) => { e.preventDefault(); await load(id); }}><label className="field">Retrieve a report by experiment ID<input value={id} onChange={e => setId(e.target.value)} required placeholder="Experiment UUID"/></label><button className="primary" disabled={s.busy}>Load report</button></form>{s.error && <p role="alert" className="error">{s.error}</p>}<ul className="history">{s.history.map(r => <li key={r.id}><span>{r.name}<small>{r.id}</small></span><button onClick={async () => { await load(r.id); router.push('/'); }}>Open dashboard</button></li>)}</ul><Link href="/">← Back to dashboard</Link></main>; }
